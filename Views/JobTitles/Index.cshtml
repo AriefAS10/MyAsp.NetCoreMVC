@@ -1,0 +1,69 @@
+﻿@model IEnumerable<DataPribadiNetCoreMVC.Models.JobTitle>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="alert alert-success">
+        <strong>Berhasil !</strong> @TempData["AlertMessage"]
+    </div>
+}
+
+<h2>Job Title Master Data</h2>
+<hr />
+<p>
+    <a class="btn btn-primary" asp-action="Create">Tambah Job Title Baru</a>
+</p>
+<table id="table_id" class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.JobCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobTitle1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DepartmentId)
+            </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobTitle1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department.DepartmentName)
+            </td>
+            <td style="text-align:center">
+                <a class="btn btn-primary btn-sm" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                <a class="btn btn-info btn-sm" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                <a class="btn btn-danger btn-sm"asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+    $('#table_id').DataTable({
+        columnDefs: [{
+            orderable: false, targets: 3,
+            searchable: false, targets: 3,
+        }],
+        lengthMenu: [[5, 10, 25, -1], [5, 10, 25, "All"]],
+        searching: true
+    });
+});
+    </script>
+}

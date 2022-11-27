@@ -1,0 +1,43 @@
+﻿@model DataPribadiNetCoreMVC.Models.JobTitle
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div style="text-align:center">
+    <h1>Edit</h1>
+    <h4>@Html.DisplayFor(model => model.JobTitle1)</h4>
+</div>
+
+<hr />
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <form asp-action="Edit" class="form-control addshadow">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group mb-3">
+                <label asp-for="JobCode" class="control-label"></label>
+                <input asp-for="JobCode" class="form-control" />
+                <span asp-validation-for="JobCode" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="JobTitle1" class="control-label"></label>
+                <input asp-for="JobTitle1" class="form-control" />
+                <span asp-validation-for="JobTitle1" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="DepartmentId" class="control-label"></label>
+                <input asp-for="DepartmentId" class="form-control" />
+                <span asp-validation-for="DepartmentId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" style="width:48%" />
+                <a class="btn btn-info pull-right" style="width:48%" asp-action="Index">Back</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

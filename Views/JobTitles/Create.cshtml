@@ -1,0 +1,44 @@
+﻿@model DataPribadiNetCoreMVC.Models.JobTitle
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 style="text-align:center">Add New Job Title</h1>
+<hr />
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <form autocomplete="off" asp-action="Create" class="form-control addshadow">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group mb-3">
+                <label asp-for="JobCode" class="control-label"></label>
+                <input readonly="true" asp-for="JobCode" class="form-control" />
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="JobTitle1" class="control-label"></label>
+                <input asp-for="JobTitle1" class="form-control" maxlength="100" />
+                <span asp-validation-for="JobTitle1" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="DepartmentId" class="control-label"></label>
+                <select asp-for="DepartmentId" class="form-control" asp-items="ViewBag.DepartmentId"></select>
+            </div>
+
+            <div class="form-group mb-3">
+                <input type="submit" value="Save" class="btn btn-primary" style="width:48%" />
+                <a class="btn btn-info pull-right" style="width:48%" asp-action="Index">Back</a>
+            </div>
+        </form>
+        <div class="col-md-6">
+            <a class="form-text text-primary" asp-action="MasterCreate">Add new Job Title with Master Create</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

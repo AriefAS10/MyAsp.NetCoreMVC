@@ -1,0 +1,73 @@
+﻿@model DataPribadiNetCoreMVC.Models.DataDb
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="alert alert-primary">
+        @*<strong>Berhasil !</strong>*@ @TempData["AlertMessage"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span>x</span>
+        </button>
+    </div>
+}
+
+<h1 style="text-align:center">Tambah Data Baru</h1>
+<hr />
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <form autocomplete="off" asp-action="Create" class="form-control addshadow">
+
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="mb-3">
+                <label asp-for="Nik" class="control-label"></label>
+                <input asp-for="Nik" class="form-control" maxlength="30" />
+                <span asp-validation-for="Nik" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="NamaLengkap" class="control-label"></label>
+                <input asp-for="NamaLengkap" class="form-control" maxlength="30" />
+                <span asp-validation-for="NamaLengkap" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="JenisKelamin" class="control-label"></label>
+                    <input class="form-check-input" type="radio" asp-for="JenisKelamin" value="Laki-Laki" /> Laki-Laki
+                    <input class="form-check-input" type="radio" asp-for="JenisKelamin" value="Perempuan" /> Perempuan
+                <span asp-validation-for="JenisKelamin" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="TanggalLahir" class="control-label"></label>
+                <input type="text" asp-for="TanggalLahir" class="datepicker form-control" />
+                <span asp-validation-for="TanggalLahir" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Alamat" class="control-label"></label>
+                <textarea rows="5" cols="40" style="width:100%; max-width:100%;" asp-for="Alamat" class="form-control"></textarea>
+                <span asp-validation-for="Alamat" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="CountryId" class="control-label"></label>
+                <select asp-for="CountryId" class="form-control" asp-items="ViewBag.CountryId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" style="width:48%" />
+                <a class="btn btn-info pull-right" style="width:48%" asp-action="Index">Back</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+</div>
+
+@section Scripts {
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

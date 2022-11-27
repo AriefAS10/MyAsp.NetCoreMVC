@@ -1,0 +1,91 @@
+﻿@model IEnumerable<DataPribadiNetCoreMVC.Models.DataDb>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@if (TempData["AlertMessage"] != null)
+{
+        <div class="alert alert-success">
+            <strong>Berhasil !</strong> @TempData["AlertMessage"]
+            <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+            </button>
+        </div>
+}
+
+<h2>Data Pribadi Master Data</h2>
+<hr />
+
+<form method="get" asp-action="Index" style="margin: 0 0 1em;">
+    <div class="row">
+    <div class="col-sm-12">
+            <a class="btn btn-primary" asp-action="Create">Tambah Data Baru</a>       
+    </div>
+</div>
+</form>
+
+@*<p>
+    <a class="btn btn-primary" asp-action="Create">Tambah Data Baru</a>
+</p>*@
+
+
+<table id="table_id" class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nik)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NamaLengkap)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JenisKelamin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TanggalLahir)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Alamat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CountryId)
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nik)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NamaLengkap)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JenisKelamin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TanggalLahir)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Alamat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Country.Negara)
+            </td>
+            <td>
+                <a class="btn btn-primary btn-sm" asp-action="Edit" asp-route-id="@item.Nik">Edit</a>
+                <a class="btn btn-info btn-sm" asp-action="Details" asp-route-id="@item.Nik">Details</a>
+                <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Nik">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+@section scripts {
+    <script src="~/js/datatables.js"></script>
+}

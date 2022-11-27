@@ -1,0 +1,34 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "popper.js@2.11.6",
+      "destination": "wwwroot/js/popper.js/"
+    }
+  ,
+{
+  "provider": "cdnjs",
+  "library": "jqueryui@1.13.2",
+  "destination": "wwwroot/csl/jqueryui/"
+}
+,
+{
+  "provider": "cdnjs",
+  "library": "jquery@3.6.1",
+  "destination": "wwwroot/csl/jquery/"
+}
+,
+{
+  "provider": "cdnjs",
+  "library": "jquery-validate@1.19.5",
+  "destination": "wwwroot/csl/jquery-validate/"
+}
+,
+{
+  "provider": "cdnjs",
+  "library": "jquery-validation-unobtrusive@4.0.0",
+  "destination": "wwwroot/csl/jquery-validation-unobtrusive/"
+}
+]
+}
