@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using DataPribadiNetCoreMVC.Data;
-using DataPribadiNetCoreMVC.Models;
-
-namespace DataPribadiNetCoreMVC.Controllers
+﻿namespace DataPribadiNetCoreMVC.Controllers
 {
     public class JobTitlesController : Controller
     {
