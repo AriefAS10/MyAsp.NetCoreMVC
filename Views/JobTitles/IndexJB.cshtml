@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<DataPribadiNetCoreMVC.Models.JobTitle>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Job Title";
 }
 
 @if (TempData["AlertMessage"] != null)
@@ -14,7 +14,7 @@
 <h2>Job Title Master Data</h2>
 <hr />
 <p>
-    <a class="btn btn-primary" asp-action="Create">Tambah Job Title Baru</a>
+    <a class="btn btn-primary" asp-action="CreateJB">Tambah Job Title Baru</a>
 </p>
 <table id="table_id" class="table table-striped">
     <thead>
@@ -44,9 +44,9 @@
                 @Html.DisplayFor(modelItem => item.Department.DepartmentName)
             </td>
             <td style="text-align:center">
-                <a class="btn btn-primary btn-sm" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                <a class="btn btn-info btn-sm" asp-action="Details" asp-route-id="@item.Id">Details</a>
-                <a class="btn btn-danger btn-sm"asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a class="btn btn-primary btn-sm" asp-action="EditJB" asp-route-id="@item.Id">Edit</a>
+                <a class="btn btn-info btn-sm" asp-action="DetailsJB" asp-route-id="@item.Id">Details</a>
+                <a class="btn btn-danger btn-sm"asp-action="DeleteJB" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
 }

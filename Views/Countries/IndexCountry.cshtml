@@ -1,0 +1,59 @@
+﻿@model IEnumerable<DataPribadiNetCoreMVC.Models.Country>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="CreateCountry">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Iso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Negara)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Iso3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneCode)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Iso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Negara)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Iso3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneCode)
+            </td>
+            <td>
+                <a asp-action="EditCountry" asp-route-id="@item.CountryId">Edit</a> |
+                <a asp-action="DetailsCountry" asp-route-id="@item.CountryId">Details</a> |
+                <a asp-action="DeleteCountry" asp-route-id="@item.CountryId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

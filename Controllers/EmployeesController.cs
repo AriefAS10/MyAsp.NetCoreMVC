@@ -20,14 +20,14 @@ namespace DataPribadiNetCoreMVC.Controllers
         }
 
         // GET: Employees
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> IndexEmp()
         {
             var dataPribadiDbContext = _context.Employees.Include(e => e.DataDb).Include(e => e.JobTitle);
             return View(await dataPribadiDbContext.ToListAsync());
         }
 
         // GET: Employees/Details/5
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> DetailsEmp(string id)
         {
             if (id == null || _context.Employees == null)
             {
@@ -47,9 +47,9 @@ namespace DataPribadiNetCoreMVC.Controllers
         }
 
         // GET: Employees/Create
-        public IActionResult Create()
+        public IActionResult CreateEmp()
         {
-            ViewData["EmployeeName"] = new SelectList(_context.DataDbs, "Nik", "Nik");
+            ViewData["EmployeeName"] = new SelectList(_context.DataDbs, "Nik", "NamaLengkap");
             ViewData["JobTitles"] = new SelectList(_context.JobTitles, "Id", "JobTitle1");
             return View();
         }
@@ -59,21 +59,21 @@ namespace DataPribadiNetCoreMVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EmpId,EmployeeName,JobTitles,Email,Phone,HiredDate,JobId,Country")] Employee employee)
+        public async Task<IActionResult> CreateEmp([Bind("EmpId,EmployeeName,JobTitles,Email,Phone,HiredDate,JobId,Country")] Employee employee)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(employee);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(IndexEmp));
             }
-            ViewData["EmployeeName"] = new SelectList(_context.DataDbs, "Nik", "Nik", employee.EmployeeName);
+            ViewData["EmployeeName"] = new SelectList(_context.DataDbs, "Nik", "NamaLengkap", employee.EmployeeName);
             ViewData["JobTitles"] = new SelectList(_context.JobTitles, "Id", "JobTitle1", employee.JobTitles);
             return View(employee);
         }
 
         // GET: Employees/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> EditEmp(string id)
         {
             if (id == null || _context.Employees == null)
             {
@@ -95,7 +95,7 @@ namespace DataPribadiNetCoreMVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("EmpId,EmployeeName,JobTitles,Email,Phone,HiredDate,JobId,Country")] Employee employee)
+        public async Task<IActionResult> EditEmp(string id, [Bind("EmpId,EmployeeName,JobTitles,Email,Phone,HiredDate,JobId,Country")] Employee employee)
         {
             if (id != employee.EmpId)
             {
@@ -120,7 +120,7 @@ namespace DataPribadiNetCoreMVC.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(IndexEmp));
             }
             ViewData["EmployeeName"] = new SelectList(_context.DataDbs, "Nik", "Nik", employee.EmployeeName);
             ViewData["JobTitles"] = new SelectList(_context.JobTitles, "Id", "JobTitle1", employee.JobTitles);
@@ -128,7 +128,7 @@ namespace DataPribadiNetCoreMVC.Controllers
         }
 
         // GET: Employees/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> DeleteEmp(string id)
         {
             if (id == null || _context.Employees == null)
             {
@@ -163,7 +163,7 @@ namespace DataPribadiNetCoreMVC.Controllers
             }
             
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(IndexEmp));
         }
 
         private bool EmployeeExists(string id)

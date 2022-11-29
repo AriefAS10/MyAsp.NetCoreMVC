@@ -10,14 +10,14 @@
         }
 
         // GET: JobTitles
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> IndexJB()
         {
             var dataPribadiDbContext = _context.JobTitles.Include(j => j.Department);
             return View(await dataPribadiDbContext.ToListAsync());
         }
 
         // GET: JobTitles/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> DetailsJB(int? id)
         {
             if (id == null || _context.JobTitles == null)
             {
@@ -36,7 +36,7 @@
         }
 
         // GET: JobTitles/Create
-        public IActionResult Create(string JobCode)
+        public IActionResult CreateJB(string JobCode)
         {
             JobTitle jb = new JobTitle();
             var Jcode = _context.JobTitles.OrderByDescending(m => m.JobCode).FirstOrDefault();
@@ -63,7 +63,7 @@
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,JobCode,JobTitle1,DepartmentId")] JobTitle jobTitle)
+        public async Task<IActionResult> CreateJB([Bind("Id,JobCode,JobTitle1,DepartmentId")] JobTitle jobTitle)
         {
 
             try
@@ -72,12 +72,12 @@
                 await _context.SaveChangesAsync();
                 TempData["AlertMessage"] = "Data Berhasil Ditambahkan";
             }
-            catch (Exception Create)
+            catch (Exception CreateJB)
             {
-                ViewBag.ErrorMessage = Create.Message;
+                ViewBag.ErrorMessage = CreateJB.Message;
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("IndexJB");
         }
 
 
@@ -107,11 +107,11 @@
                 ViewBag.ErrorMessage = MasterCreate.Message;
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("IndexJB");
         }
 
         // GET: JobTitles/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> EditJB(int? id)
         {
             if (id == null || _context.JobTitles == null)
             {
@@ -131,7 +131,7 @@
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,JobCode,JobTitle1,DepartmentId")] JobTitle jobTitle)
+        public async Task<IActionResult> EditJB(int id, [Bind("Id,JobCode,JobTitle1,DepartmentId")] JobTitle jobTitle)
         {
             if (id != jobTitle.Id)
             {
@@ -162,7 +162,7 @@
         }
 
         // GET: JobTitles/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> DeleteJB(int? id)
         {
             if (id == null || _context.JobTitles == null)
             {
@@ -195,7 +195,7 @@
             }
             
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(IndexJB));
         }
 
         private bool JobTitleExists(int id)

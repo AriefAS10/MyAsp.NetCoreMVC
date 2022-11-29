@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<DataPribadiNetCoreMVC.Models.Employee>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Employee";
 }
 
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="CreateEmp">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -61,9 +61,9 @@
                 @Html.DisplayFor(modelItem => item.JobTitle.JobTitle1)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.EmpId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.EmpId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.EmpId">Delete</a>
+                <a asp-action="EditEmp" asp-route-id="@item.EmpId">Edit</a> |
+                <a asp-action="DetailsEmp" asp-route-id="@item.EmpId">Details</a> |
+                <a asp-action="DeleteEmp" asp-route-id="@item.EmpId">Delete</a>
             </td>
         </tr>
 }

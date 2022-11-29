@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<DataPribadiNetCoreMVC.Models.DataDb>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Candidate";
 }
 
 @if (TempData["AlertMessage"] != null)
@@ -13,7 +13,7 @@
         </div>
 }
 
-<h2>Data Pribadi Master Data</h2>
+<h2>Candidate Master Data</h2>
 <hr />
 
 <form method="get" asp-action="Index" style="margin: 0 0 1em;">
@@ -71,7 +71,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Country.Negara)
             </td>
-            <td>
+            <td class="text-center">
                 <a class="btn btn-primary btn-sm" asp-action="Edit" asp-route-id="@item.Nik">Edit</a>
                 <a class="btn btn-info btn-sm" asp-action="Details" asp-route-id="@item.Nik">Details</a>
                 <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Nik">Delete</a>

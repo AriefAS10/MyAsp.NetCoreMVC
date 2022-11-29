@@ -146,13 +146,17 @@ table {
     box-shadow: 0 2px 12px rgba(32,32,32,.3);
 }
 
+.textshadow {
+    text-shadow: 0 2px 12px rgba(32,32,32,.3);
+}
+
 .table td, .table th {
     padding: 12px 15px;
     border: 1px solid #ddd;
 }
 
 .table th {
-    background-color: #616161;
+    background-color: #5779e0;
     color: #ffffff;
     text-align: center;
     font-family: 'Roboto', sans-serif;
@@ -162,4 +166,8 @@ table {
 .table td {
     font-family: sans-serif;
     font-size: 15px;
+}
+
+.bg-main{
+    background-color: #5779e0;
 }

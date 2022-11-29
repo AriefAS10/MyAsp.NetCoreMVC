@@ -6,7 +6,7 @@ namespace DataPribadiNetCoreMVC.Controllers
     {
         public DataPribadiDbContext _context = new DataPribadiDbContext();
 
-        public IActionResult Index()
+        public IActionResult IndexVM()
         {
             var country = _context.DataDbs.Include(d => d.Country);
             var data = country.ToList();
